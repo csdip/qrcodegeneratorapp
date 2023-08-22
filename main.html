@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="csdip">
+    <meta name="description" content="This is a simple QR Code Generator App using API">
+    <title>QR Code Generator By: csdip</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="container">
+        <label for="text">Enter your text or URL</label>
+        <input type="text" name="text" class="text" placeholder="url or text">
+        <div class="qrImg">
+            <img alt="QR Code" class="img">
+        </div>
+        <button type="button" class="btn">Generate QR Code</button>
+    </div>
+</body>
+
+<script type="text/javascript">
+    const btn = document.querySelector('.btn');
+    const text = document.querySelector('.text');
+    const label = document.querySelector('label');
+    const qrImg = document.querySelector('.qrImg');
+    const img = document.querySelector('.img');
+
+    btn.addEventListener('click', ()=>{
+        if(text.value.length > 0){
+            img.src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + text.value;
+            qrImg.classList.add('show')
+        }else{
+            qrImg.classList.remove('show')
+            label.classList.add('error')
+            text.classList.add('error')
+            setTimeout(() => {
+                text.classList.remove('error')
+                label.classList.remove('error')
+            }, 3000);
+        }
+        
+    })
+</script>
+</html>
