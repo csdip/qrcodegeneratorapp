@@ -1,1 +1,2 @@
-//this is just a demo comment!
+
+// you need to seperate the js file. and this is good practice!!
